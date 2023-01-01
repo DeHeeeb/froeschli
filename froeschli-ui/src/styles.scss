@@ -3,10 +3,13 @@
   position: fixed;
   right: 1em;
   top: 1em;
+  -webkit-transition: all .3s ease-in;
   transition: all .3s ease-in;
+  z-index: 100;
 }
 
-#f-logo:hover {
+#f-logo:hover, #f-logo:active {
+  -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 

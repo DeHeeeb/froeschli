@@ -1,16 +1,16 @@
-body{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+.weather-box {
+  background-color: #c5e4b2;
+  text-align: center;
+  border-radius: 15px;
+  margin-top: 5em !important;
 }
 
-@media (min-width: 30em) { 
-  body{
-    grid-template-columns: repeat(3, 1fr);
-  }
+h1 {
+  font-size: 5em !important;
+  font-weight: normal;
+  margin-bottom: .3em;
 }
 
-@media (min-width: 50em) { 
-  body{
-    grid-template-columns: repeat(4, 1fr);
-  }
+h4 {
+  margin-top: .3em;
 }

@@ -1,10 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col-6">
-      Bayreuth
+    <div *ngIf="weatherBayreuth.main" class="col-6 weather-box">
+      <h2 class="font-regular">{{'Bayreuth' | uppercase}}</h2>
+      <h1 class="font-light">{{ weatherBayreuth.main.temp | number: '1.0-0' }} ° C</h1>
+      <img src="http://openweathermap.org/img/wn/{{ weatherBayreuth.weather[0].icon}}@2x.png">
+      <h4 class="font-regular">{{ weatherBayreuth.weather[0].description }}</h4>
     </div>
-    <div class="col-6">
-      St. Gallen
+    <div *ngIf="weatherStGallen.main" class="col-6 weather-box">
+      <h2 class="font-regular">{{'St. Gallen' | uppercase}}</h2>
+      <h1 class="font-light">{{ weatherStGallen.main.temp | number: '1.0-0' }} ° C</h1>
+      <img src="http://openweathermap.org/img/wn/{{ weatherStGallen.weather[0].icon}}@2x.png">
+      <h4 class="font-regular">{{ weatherStGallen.weather[0].description }}</h4>
     </div>
   </div>
 </div>

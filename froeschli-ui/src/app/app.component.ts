@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, LOCALE_ID, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {formatNumber} from "@angular/common";
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,10 @@ export class AppComponent implements OnInit {
   private bayreuthUrl = this.baseUrl + "&q=Bayreuth,de&";
   private stGallenUrl = this.baseUrl + "&q=Sankt Gallen,ch&";
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    @Inject(LOCALE_ID) private locale: string
+  ) {
   }
 
   ngOnInit() {
@@ -30,5 +34,15 @@ export class AppComponent implements OnInit {
 
   getStGallen() {
     return this.http.get<any>(this.stGallenUrl);
+  }
+
+  isSameWeather() {
+    return this.weatherStGallen?.main && this.weatherBayreuth?.main &&
+      this.getTempRounded(this.weatherStGallen) === this.getTempRounded(this.weatherBayreuth) &&
+      this.weatherStGallen.weather[0].description === this.weatherBayreuth.weather[0].description;
+  }
+
+  private getTempRounded(weather: any) {
+    return formatNumber(weather.main.temp, this.locale, '1.0-0');
   }
 }

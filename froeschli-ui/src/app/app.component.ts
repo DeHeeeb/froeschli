@@ -8,11 +8,11 @@ import {formatNumber} from "@angular/common";
   styleUrls: ['./simple-grid.scss', './app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public weatherBayreuth: any;
+  public weatherSambi: any;
   public weatherStGallen: any;
 
   private baseUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&lang=de&APPID=fbb4bb9ce8ee1b0e9097972e8429c9d3";
-  private bayreuthUrl = this.baseUrl + "&q=Bayreuth,de&";
+  private sambiUrl = this.baseUrl + "&q=Untersambach,de&";
   private stGallenUrl = this.baseUrl + "&q=Sankt Gallen,ch&";
 
   constructor(
@@ -22,14 +22,14 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getBayreuth().subscribe(bayreuth =>
-      this.weatherBayreuth = bayreuth);
+    this.getSambi().subscribe(sambi =>
+      this.weatherSambi = sambi);
     this.getStGallen().subscribe(stGallen =>
       this.weatherStGallen = stGallen);
   }
 
-  getBayreuth() {
-    return this.http.get<any>(this.bayreuthUrl);
+  getSambi() {
+    return this.http.get<any>(this.sambiUrl);
   }
 
   getStGallen() {
@@ -37,9 +37,9 @@ export class AppComponent implements OnInit {
   }
 
   isSameWeather() {
-    return this.weatherStGallen?.main && this.weatherBayreuth?.main &&
-      this.getTempRounded(this.weatherStGallen) === this.getTempRounded(this.weatherBayreuth) &&
-      this.weatherStGallen.weather[0].description === this.weatherBayreuth.weather[0].description;
+    return this.weatherStGallen?.main && this.weatherSambi?.main &&
+      this.getTempRounded(this.weatherStGallen) === this.getTempRounded(this.weatherSambi) &&
+      this.weatherStGallen.weather[0].description === this.weatherSambi.weather[0].description;
   }
 
   private getTempRounded(weather: any) {

@@ -4,13 +4,13 @@
       <h2 class="font-regular">Gliiches Wetter!!!</h2>
       <img id="frog-dance" src="./assets/frog-dance.gif">
     </div>
-    <div *ngIf="weatherBayreuth?.main" class="col-6 weather-box">
-      <h2 class="font-regular">{{ weatherBayreuth.name | uppercase }}</h2>
+    <div *ngIf="weatherSambi?.main" class="col-6 weather-box">
+      <h2 class="font-regular">{{ weatherSambi.name | uppercase }}</h2>
       <h1 class="font-light">
-        {{ weatherBayreuth.main.temp | number: '1.0-0' }}<sup class="degrees">° C</sup>
+        {{ weatherSambi.main.temp | number: '1.0-0' }}<sup class="degrees">° C</sup>
       </h1>
-      <img class="weather-icon" src="./assets/weather-icons/{{ weatherBayreuth.weather[0].icon }}.svg">
-      <h4 class="font-regular">{{ weatherBayreuth.weather[0].description }}</h4>
+      <img class="weather-icon" src="./assets/weather-icons/{{ weatherSambi.weather[0].icon }}.svg">
+      <h4 class="font-regular">{{ weatherSambi.weather[0].description }}</h4>
     </div>
     <div *ngIf="weatherStGallen?.main" class="col-6 weather-box">
       <h2 class="font-regular">{{ weatherStGallen.name | uppercase }}</h2>
